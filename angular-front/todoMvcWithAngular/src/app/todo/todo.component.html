@@ -1,0 +1,23 @@
+<div class="container-fuild corps">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 style="text-align: center;" >todos</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <input type="text" [(ngModel)]="newTodo" autofocus=""  class="form-control" placeholder="What needs to be done ?" (keyup.enter)="addTodo()" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <ul *ngIf="todoList.length" >
+          <li *ngFor="let todo of todoList">
+              <input type="checkbox"  [checked]="todo.complete" />
+              <label> {{ todo.title }} </label>
+              <button class="destroy" ></button>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
