@@ -28,4 +28,5 @@ jobs:
           node-version: '12'
       - run: |
           cd angular-front/todoMvcWithAngular
+          npm install
           npm run build
