@@ -32,16 +32,16 @@ jobs:
           node-version: '12'
 
       - name: Build angular project
-      - run: |
+        run: |
           cd ${{ env.SERVICE_LOCATION }}
           npm install
           npm run build
 
       - name: Build docker images
-      - run: |
+        run: |
           docker build -t test ${{ env.SERVICE_LOCATION }}
 
       - name: Login to docker to docker hub
-      - run: |
+        run: |
           echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER_NAME }} --password-stdin
 
