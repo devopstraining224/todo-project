@@ -72,13 +72,13 @@ jobs:
 
       - name: Build docker images
         run: |
-          docker build -t ${{ secrets.DOCKER_USER_NAME }}/devops-training-front:${{env.BRANCH_NAME}} ${{ env.SERVICE_LOCATION }}
+          docker build -t ${{ secrets.DOCKER_USER_NAME }}/devops-training-react:${{env.BRANCH_NAME}} ${{ env.SERVICE_LOCATION }}
 
       - name: Login to docker hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER_NAME }} --password-stdin
 
       - name: Push image to docker-hub
         run: |
-          docker push ${{ secrets.DOCKER_USER_NAME }}/devops-training-angular:${{env.BRANCH_NAME}}
+          docker push ${{ secrets.DOCKER_USER_NAME }}/devops-training-react:${{env.BRANCH_NAME}}
 
 
