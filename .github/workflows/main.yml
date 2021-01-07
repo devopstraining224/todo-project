@@ -45,7 +45,11 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_USER_NAME }}/devops-training-angular:${{env.BRANCH_NAME}} ${{ env.SERVICE_LOCATION }}
 
-      - name: Login to docker to docker hub
+      - name: Login to docker hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER_NAME }} --password-stdin
+
+      - name: Push image to docker-hub
         run: |
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USER_NAME }} --password-stdin
+          docker push ${{ secrets.DOCKER_USER_NAME }}/devops-training-angular:${{env.BRANCH_NAME}}
+
 
